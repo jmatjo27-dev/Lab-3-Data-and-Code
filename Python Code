@@ -16,9 +16,11 @@ T_0 = 298.15
 R_1 = 1000
 B = 3977
 V_in = 5
-V_out = A_0 * V_in /1023
-R_t = R_1 * (V_in/V_out - 1)
-T = 1/(1/T_0 + np.log(R_t/R_0)/B)
+V_out = A_0 * V_in / 1023.0
+
+R_t = R_1 * (V_in / voltage_measured - 1)
+
+T_kelvin = 1 / (1/T_0 + (1/B) * np.log(R_t/R_0))
 
 
 fig, ax = plt.subplots() 
