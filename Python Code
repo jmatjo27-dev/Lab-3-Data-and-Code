@@ -11,11 +11,7 @@ t_ms=df['t_ms'].values
 V_0 = df['V_0'].values
 A_0 = df['A_0'].values
 t_s=t_ms/1000
-R0 = 3300  # Resistance at 25°C (10kΩ)
-T0 = 298.15  # Reference temperature in Kelvin (25°C)
-B = 3977     # Beta value
-R_series = 1000  # Series resistor value in voltage divider
-V_in = 5.0  # Arduino reference voltage (5V)
+
 
 
 
