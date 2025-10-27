@@ -11,9 +11,23 @@ t_ms=df['t_ms'].values
 V_0 = df['V_0'].values
 A_0 = df['A_0'].values
 t_s=t_ms/1000
+R_0 = 3300  
+T_0 = 298.15  
+B = 3977  
+R_1 = 1000 
+V_in = 5.0  
+V_out = A_0 * V_in / 1023.0
+R_t = R_1 * (V_in / V_out - 1)
+T = 1 / (1/T_0 + (1/B) * np.log(R_t/R_0))
 
 
+fig, ax = plt.subplots(figsize=(10, 6))
 
+ax.plot(t_s, T, 'b-', linewidth=2)
+ax.set_xlabel('Time (s)', fontsize=12)
+ax.set_ylabel('Temperature (K)', fontsize=12)
+ax.set_title('Temperature vs Time', fontsize=14)
+ax.grid(True, alpha=0.3)
 
 fig, ax1 = plt.subplots()
 ax1.plot(t_s, V_0, 'b-', linewidth=2.0)
@@ -26,3 +40,4 @@ ax2.set_ylabel('Thermistor', color='r')
 ax2.tick_params(axis='y', labelcolor='r')
 ax1.set_title('Potentiometer and Thermistor Values vs Time')
 plt.show()
+
