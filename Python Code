@@ -11,24 +11,13 @@ t_ms=df['t_ms'].values
 V_0 = df['V_0'].values
 A_0 = df['A_0'].values
 t_s=t_ms/1000
-R_0 = 3300 
-T_0 = 298.15
-R_1 = 1000
-B = 3977
-V_in = 5
-V_out = A_0 * V_in / 1023.0
-
-R_t = R_1 * (V_in / V_0 - 1)
-
-T = 1 / (1/T_0 + (1/B) * np.log(R_t/R_0))
+R0 = 3300  # Resistance at 25°C (10kΩ)
+T0 = 298.15  # Reference temperature in Kelvin (25°C)
+B = 3977     # Beta value
+R_series = 1000  # Series resistor value in voltage divider
+V_in = 5.0  # Arduino reference voltage (5V)
 
 
-fig, ax = plt.subplots() 
-ax.plot(t_s, T, linewidth = 2.0)
-ax.set_xlabel('Time [s]')
-ax.set_ylabel('Temperature [K]')
-ax.set_title('Temperature as a function of Time')
-plt.show()
 
 fig, ax1 = plt.subplots()
 ax1.plot(t_s, V_0, 'b-', linewidth=2.0)
