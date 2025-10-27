@@ -11,6 +11,22 @@ t_ms=df['t_ms'].values
 V_0 = df['V_0'].values
 A_0 = df['A_0'].values
 t_s=t_ms/1000
+R_0 = 3300 
+T_0 = 298.15
+R_1 = 1000
+B = 3977
+V_in = 5
+V_out = A_0 * V_in /1023
+R_t = R_1 * (V_in/V_out - 1)
+T = 1/(1/T_0 + np.log(R_t/R_0)/B)
+
+
+fig, ax = plt.subplots() 
+ax.plot(t_ms, T, linewidth = 2.0)
+ax.set_xlabel('Time [s]')
+ax.set_ylabel('Temperature [K]')
+ax.set_title('Temperature as a function of Time')
+plt.show()
 
 fig, ax1 = plt.subplots()
 ax1.plot(t_s, V_0, 'b-', linewidth=2.0)
