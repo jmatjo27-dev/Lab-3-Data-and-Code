@@ -20,7 +20,7 @@ V_out = A_0 * V_in / 1023.0
 
 R_t = R_1 * (V_in / V_0 - 1)
 
-T_kelvin = 1 / (1/T_0 + (1/B) * np.log(R_t/R_0))
+T = 1 / (1/T_0 + (1/B) * np.log(R_t/R_0))
 
 
 fig, ax = plt.subplots() 
